@@ -5,7 +5,7 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import { useRouter } from "next/navigation";
 
-export default function SignUpPage() {
+export default function ForgotPassword() {
   const router = useRouter();
 
   const formik = useFormik({
@@ -19,7 +19,7 @@ export default function SignUpPage() {
     }),
     onSubmit: (values) => {
       // Email дамжуулж password хуудас руу чиглүүлнэ
-      router.push(`/signup/password?email=${encodeURIComponent(values.email)}`);
+      router.push(`/login/password?email=${encodeURIComponent(values.email)}`);
     },
   });
 
@@ -34,14 +34,14 @@ export default function SignUpPage() {
           <button
             type="button"
             className="text-gray-500 text-2xl focus:outline-none"
-            onClick={() => router.back()}
+            // onClick={() => router.back()}
           >
             ←
           </button>
 
-          <h2 className="text-2xl font-bold">Create your account</h2>
+          <h2 className="text-2xl font-bold">Reset your password </h2>
           <p className="text-sm text-gray-500">
-            Sign up to explore your favorite dishes.
+            Enter your email to receive a password reset link.
           </p>
 
           {/* Email input */}
@@ -68,19 +68,19 @@ export default function SignUpPage() {
           <button
             type="submit"
             disabled={!(formik.isValid && formik.dirty)}
-            className={`w-full py-2 rounded border ${
+            className={`w-full py-2 rounded border mt-5 ${
               formik.isValid && formik.dirty
-                ? "bg-blue-600 text-white hover:bg-blue-700"
+                ? "bg-black text-white"
                 : "bg-gray-200 text-gray-500 cursor-not-allowed"
             }`}
           >
-            Let's Go
+            Send link
           </button>
 
-          <p className="text-sm text-gray-600 mt-2">
-            Already have an account?{" "}
+          <p className="text-sm text-gray-600 mt-2 ml-16 ">
+            Don't have an account?{" "}
             <a href="#" className="text-blue-600 hover:underline">
-              Log in
+              Sign Up
             </a>
           </p>
         </form>
