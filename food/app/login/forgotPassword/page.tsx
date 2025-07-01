@@ -1,25 +1,28 @@
+// app/forgot-password/page.tsx
 "use client";
 
-import React from "react";
+import { useRouter } from "next/navigation";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import { useRouter } from "next/navigation";
 
 export default function ForgotPassword() {
   const router = useRouter();
 
   const formik = useFormik({
-    initialValues: {
-      email: "",
-    },
+    initialValues: { email: "" },
     validationSchema: Yup.object({
       email: Yup.string()
-        .email("Зөв имэйл хаяг оруулна уу")
-        .required("Имэйл шаардлагатай"),
+        .email("Буруу Имэйл байна!")
+        .required("Имэйл шаардлагатай!"),
     }),
     onSubmit: (values) => {
-      // Email дамжуулж password хуудас руу чиглүүлнэ
-      router.push(`/login/password?email=${encodeURIComponent(values.email)}`);
+      // Энд reset линк илгээх API холбож болно
+      console.log("Sending reset link to:", values.email);
+      router.push(
+        `/login/forgotPassword/verifyEmail?email=${encodeURIComponent(
+          values.email
+        )}`
+      );
     },
   });
 
@@ -33,54 +36,45 @@ export default function ForgotPassword() {
         >
           <button
             type="button"
-            className="text-gray-500 text-2xl focus:outline-none"
-            // onClick={() => router.back()}
+            onClick={() => router.back()}
+            className="text-gray-500 text-2xl"
           >
             ←
           </button>
 
-          <h2 className="text-2xl font-bold">Reset your password </h2>
+          <h2 className="text-2xl font-bold">Reset your password</h2>
           <p className="text-sm text-gray-500">
             Enter your email to receive a password reset link.
           </p>
 
-          {/* Email input */}
-          <div>
-            <input
-              type="email"
-              name="email"
-              placeholder="Enter your email address"
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              value={formik.values.email}
-              className={`w-full border px-4 py-2 rounded focus:outline-none ${
-                formik.touched.email && formik.errors.email
-                  ? "border-red-500"
-                  : "border-gray-300"
-              }`}
-            />
-            {formik.touched.email && formik.errors.email && (
-              <p className="text-sm text-red-500 mt-1">{formik.errors.email}</p>
-            )}
-          </div>
+          <input
+            type="email"
+            name="email"
+            placeholder="example@gmail.com"
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            value={formik.values.email}
+            className={`w-full border px-4 py-2 rounded ${
+              formik.touched.email && formik.errors.email
+                ? "border-red-500"
+                : "border-gray-300"
+            }`}
+          />
+          {formik.touched.email && formik.errors.email && (
+            <p className="text-red-500 text-sm">{formik.errors.email}</p>
+          )}
 
-          {/* Submit button */}
           <button
             type="submit"
-            disabled={!(formik.isValid && formik.dirty)}
-            className={`w-full py-2 rounded border mt-5 ${
-              formik.isValid && formik.dirty
-                ? "bg-black text-white"
-                : "bg-gray-200 text-gray-500 cursor-not-allowed"
-            }`}
+            className="w-full py-2 rounded bg-black text-white hover:bg-gray-900"
           >
             Send link
           </button>
 
-          <p className="text-sm text-gray-600 mt-2 ml-16 ">
-            Don't have an account?{" "}
-            <a href="#" className="text-blue-600 hover:underline">
-              Sign Up
+          <p className="text-sm text-gray-600 mt-2">
+            Don’t have an account?{" "}
+            <a href="/signup" className="text-blue-600 hover:underline">
+              Sign up
             </a>
           </p>
         </form>
@@ -90,7 +84,7 @@ export default function ForgotPassword() {
       <div className="w-1/2 h-full">
         <img
           src="/imgs/hun.png"
-          alt="Food delivery"
+          alt="Delivery image"
           className="w-full h-full object-cover rounded-l-xl"
         />
       </div>

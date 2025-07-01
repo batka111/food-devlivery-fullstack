@@ -19,7 +19,7 @@ export default function LogIn() {
     }),
     onSubmit: (values) => {
       // Email дамжуулж password хуудас руу чиглүүлнэ
-      router.push(`/signup/password?email=${encodeURIComponent(values.email)}`);
+      router.push(`/login/forgotPassword`);
     },
   });
 
