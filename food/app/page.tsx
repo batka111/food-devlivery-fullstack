@@ -1,5 +1,4 @@
-import Header from "@/components/HomeComponents/header";
-import { Button } from "@/components/ui/button";
+import Header from "../components/HomeComponents/header";
 
 const Food = () => {
   return (

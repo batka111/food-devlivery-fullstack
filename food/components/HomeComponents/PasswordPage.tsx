@@ -28,6 +28,10 @@ export default function PasswordPage() {
     validationSchema: Yup.object({
       password: Yup.string()
         .min(6, "Password must be at least 6 characters")
+        .matches(
+          /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d@$!%*?&]+$/,
+          "Password must contain both letters and numbers"
+        )
         .required("Required"),
       confirm: Yup.string()
         .oneOf([Yup.ref("password")], "Passwords must match")
@@ -58,13 +62,13 @@ export default function PasswordPage() {
 
           <h2 className="text-2xl font-bold">Create a strong password</h2>
           <p className="text-sm text-gray-500">
-            Create a strong password with letters, numbers.
+            Create a strong password with letters and numbers.
           </p>
 
           {/* Password */}
           <div>
             <input
-              type={showPassword ? "number" : "password"}
+              type={showPassword ? "text" : "password"}
               name="password"
               placeholder="Password"
               onChange={formik.handleChange}
@@ -86,7 +90,7 @@ export default function PasswordPage() {
           {/* Confirm Password */}
           <div>
             <input
-              type={showPassword ? "number" : "password"}
+              type={showPassword ? "text" : "password"}
               name="confirm"
               placeholder="Confirm"
               onChange={formik.handleChange}
@@ -105,7 +109,7 @@ export default function PasswordPage() {
             )}
           </div>
 
-          {/* Show password */}
+          {/* Show password toggle */}
           <div className="flex items-center space-x-2">
             <input
               type="checkbox"
@@ -141,7 +145,7 @@ export default function PasswordPage() {
         </form>
       </div>
 
-      {/* Zurag */}
+      {/* Right - Image */}
       <div className="w-1/2 h-full hidden md:block">
         <img
           src="/imgs/hun.png"

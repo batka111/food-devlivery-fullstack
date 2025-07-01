@@ -1,5 +1,5 @@
-import PasswordForm from "@/components/HomeComponents/PasswordForm";
+import PasswordPage from "../../../components/HomeComponents/PasswordPage";
 
-export default function PasswordPage() {
-  return <PasswordForm />;
+export default function PasswordForm() {
+  return <PasswordPage />;
 }
