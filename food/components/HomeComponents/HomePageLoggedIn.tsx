@@ -1,8 +1,11 @@
 "use client";
 import { Button } from "../ui/button";
 import { useRouter } from "next/navigation";
+import { ChevronRight, Icon } from "lucide-react";
+import { ArrowRight, ChevronLeft } from "lucide-react";
+import { LocationEdit } from "lucide-react";
 
-export default function Header() {
+export default function HomePageLoggedIn() {
   const router = useRouter();
   const handleSignUp = () => {
     router.push("/signup");
@@ -23,19 +26,29 @@ export default function Header() {
             <p className=" text-white">Swift delivery</p>
           </div>
         </div>
-        <div className="flex gap-3">
-          <Button
-            className="bg-white text-black h-8 gap-2 px-3 py-2 rounded-full hover:bg-red-100"
-            onClick={handleSignUp}
-          >
-            Sign Up
-          </Button>
-          <Button
-            className="bg-red-500 h-8 gap-2 px-3 py-2 rounded-full"
-            onClick={handleLogIn}
-          >
-            Log In
-          </Button>
+        <div className="flex gap-[13px] items-center ">
+          <div className="rounded-full bg-white py-2 px-3 items-center flex gap-1 h-9 ">
+            <img src="/imgs/location.png" alt="" className="w-5 h-5" />
+            <p className="text-red-600">Delivery address:</p>
+            <p className="flex">
+              <input
+                type="text"
+                placeholder="Add Location "
+                className="hover:outline-0 outline-0 w-[100px]"
+              />
+              <ChevronRight></ChevronRight>
+            </p>
+          </div>
+          <div className="flex items-center justify-center px-4 py-2 gap-2">
+            <button className="flex rounded-full bg-white hover:bg-gray-400 w-9 items-center justify-center h-9">
+              <img src="/imgs/shopping-cart.png" alt="" className="w-4 h-4 " />
+            </button>
+          </div>
+          <div>
+            <button className="flex rounded-full bg-red-500 hover:bg-red-400 w-9 items-center justify-center h-9">
+              <img src="/imgs/user.png" alt="" className="w-4 h-4 " />
+            </button>
+          </div>
         </div>
       </div>
       <div>
@@ -109,8 +122,12 @@ export default function Header() {
                 FOLLOW US
               </p>
               <div className="flex ">
-                <img src="/imgs/Facebook.png" alt="" className="w-7 h-7" />
-                <img src="/imgs/Instagram.png" alt="" className="w-7 h-7" />
+                <a href="#">
+                  <img src="/imgs/Facebook.png" alt="" className="w-7 h-7" />
+                </a>
+                <a href="#">
+                  <img src="/imgs/Instagram.png" alt="" className="w-7 h-7" />
+                </a>
               </div>
             </div>
           </div>

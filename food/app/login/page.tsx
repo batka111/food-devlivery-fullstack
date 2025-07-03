@@ -11,15 +11,19 @@ export default function LogIn() {
   const formik = useFormik({
     initialValues: {
       email: "",
+      password: "",
     },
     validationSchema: Yup.object({
       email: Yup.string()
-        .email("Зөв имэйл хаяг оруулна уу")
+        .email("Зөв имэйл хаяг оруулна yy")
         .required("Имэйл шаардлагатай"),
+      password: Yup.string()
+        .min(6, "Нууц үгээ оруулна yy.")
+        .required("Нууц үг шаардлагатай."),
     }),
     onSubmit: (values) => {
       // Email дамжуулж password хуудас руу чиглүүлнэ
-      router.push(`/login/forgotPassword`);
+      router.push(`/`);
     },
   });
 
@@ -66,22 +70,27 @@ export default function LogIn() {
           <div>
             <input
               type="password"
-              name="Password"
+              name="password"
               placeholder="Enter your password"
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
-              value={formik.values.email}
+              value={formik.values.password}
               className={`w-full border px-4 py-2 rounded focus:outline-none ${
-                formik.touched.email && formik.errors.email
+                formik.touched.password && formik.errors.password
                   ? "border-red-500"
                   : "border-gray-300"
               }`}
             />
-            {formik.touched.email && formik.errors.email && (
-              <p className="text-sm text-red-500 mt-1">{formik.errors.email}</p>
+            {formik.touched.password && formik.errors.password && (
+              <p className="text-sm text-red-500 mt-1">
+                {formik.errors.password}
+              </p>
             )}
           </div>
-          <a href="#" className=" hover:underline underline-offset-1">
+          <a
+            href="/login/forgotPassword"
+            className=" hover:underline underline-offset-1"
+          >
             Forgot password?
           </a>
 
