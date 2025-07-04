@@ -23,7 +23,7 @@ export default function LogIn() {
     }),
     onSubmit: (values) => {
       // Email дамжуулж password хуудас руу чиглүүлнэ
-      router.push(`/`);
+      router.push(`/HomePageIn`);
     },
   });
 

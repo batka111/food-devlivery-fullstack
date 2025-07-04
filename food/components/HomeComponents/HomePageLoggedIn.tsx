@@ -15,7 +15,7 @@ export default function HomePageLoggedIn() {
     router.push("/login");
   };
   return (
-    <div className="flex flex-col w-screen">
+    <div className="flex flex-col w-screen h-screen">
       <div className="flex w-full h-[172px] px-[88px] py-3 justify-between items-center self-stretch bg-[#18181B] ">
         <div className="flex items-center gap-3">
           <img src="/imgs/serve.png" alt="" className="w-[46px] h-[38px]" />
@@ -75,7 +75,7 @@ export default function HomePageLoggedIn() {
           </p>
         </div>
         {/* middle */}
-        <div className="flex w-screen items-start gap-[220px] mx-[88px] mt-[76px]">
+        <div className="flex w-screen items-start gap-[220px]  mx-[88px] mt-[76px]">
           <div className="flex flex-col items-center gap-3">
             <img src="/imgs/serve.png" alt="" className="w-[46px] h-[37px]" />
             <div className="flex flex-col items-center">
@@ -107,7 +107,7 @@ export default function HomePageLoggedIn() {
               <p className="text-white text-[16px]">Main dishes</p>
             </div>
             <div className="flex flex-col gap-4">
-              <p className="text-black self-stretch text-[16px]">eheheh</p>
+              <br />
               <p className="text-white text-[16px]">Side dish </p>
               <p className="text-white text-[16px]">Brunch</p>
               <p className="text-white text-[16px]">Desserts</p>
@@ -121,7 +121,7 @@ export default function HomePageLoggedIn() {
               <p className="text-[#71717A] self-stretch text-[16px]">
                 FOLLOW US
               </p>
-              <div className="flex ">
+              <div className="flex gap-4">
                 <a href="#">
                   <img src="/imgs/Facebook.png" alt="" className="w-7 h-7" />
                 </a>
@@ -133,8 +133,8 @@ export default function HomePageLoggedIn() {
           </div>
         </div>
         {/* footer last */}
-        <div className="flex w-[1440px] justify-center py-8 gap-12 border-t border-solid border-t-[#71717A] ">
-          <div className="flex items-end gap-1 text-[#71717A]">
+        <div className="flex w-[1440px] justify-start py-8 gap-12 border-t border-solid border-t-[#71717A] mt-[104px] ml-[88px] ">
+          <div className="flex items-start gap-1 text-[#71717A]">
             <p>Copy right 2024</p>
             <p>©</p>
             <p>Nomnom LLC</p>
