@@ -6,6 +6,7 @@ import userRouter from "./routes/user.routes.js";
 import ordersRouterCategory from "./routes/food-order.routes.js";
 import foodOrderItemRouter from "./routes/foodOrderItems.routes.js";
 import dotenv from "dotenv";
+import cors from "cors";
 
 dotenv.config();
 
@@ -13,8 +14,9 @@ mongoose.connect(process.env.MONGO_URL as string);
 
 const server = express();
 server.use(express.json());
+server.use(cors());
 
-const port = process.env.PORT || 4000;
+const port = process.env.PORT || 3303;
 
 server.use("/food", foodsRouter);
 server.use("/category", foodsRouterCategory);

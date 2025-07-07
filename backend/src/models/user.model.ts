@@ -14,7 +14,6 @@ const user = new Schema(
     },
     phoneNumber: {
       type: Number,
-      required: true,
     },
     address: String,
     role: { type: String, enum: ["user", "admin"], default: "user" },
