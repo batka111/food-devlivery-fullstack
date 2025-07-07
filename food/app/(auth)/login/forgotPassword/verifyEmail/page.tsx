@@ -15,7 +15,11 @@ export default function VerifyPage() {
     await new Promise((res) => setTimeout(res, 1500));
     alert(`Verification email resent to ${email}`);
     setLoading(false);
+    // router.push(`/login/forgotPassword/createNewPassword`);
   };
+  // const forgot = () => {
+  //   router.push(`/login/forgotPassword/createNewPassword`);
+  // };
 
   return (
     <div className="flex h-screen font-sans">
@@ -45,7 +49,7 @@ export default function VerifyPage() {
               : "bg-black hover:bg-gray-800"
           }`}
         >
-          {loading ? "Sending..." : "Resend email"}
+          {loading ? "Илгээж байна..." : "Resend email"}
         </button>
       </div>
 
